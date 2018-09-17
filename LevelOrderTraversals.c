@@ -69,14 +69,21 @@ node* deQueue(node **queue, int *front) {
  * Levelorder traversal function using DFS ALgo(using queue) for a tree
 **/
 void printLevelorderReverse(node *root) {
+    int top;
     int rear, front;
     node **queue = createQueue(&front, &rear);
+    node **stack = createStack(&top);
     node *temp = root;
     while(temp!=NULL) {
-        printf("%d ", temp->data);
-        if(temp->left!=NULL) enQueue(queue, &rear, temp->left);
+        // printf("%d ", temp->data);
+        push(stack, &top, temp);
         if(temp->right!=NULL) enQueue(queue, &rear, temp->right);
+        if(temp->left!=NULL) enQueue(queue, &rear, temp->left);
         temp = deQueue(queue, &front);
+    }
+
+    while(top>0) {
+        printf("%d ", pop(stack, &top)->data);
     }
 }
 
@@ -87,42 +94,23 @@ void printLevelorderReverse(node *root) {
  * Main Driving Function
 **/
 void main() {
-    int top;
 
     node* a = newNode(50);
     a->left = newNode(30);
-    a->right = newNode(60);
+    a->right = newNode(20);
     a->left->left = newNode(10);
+    a->left->right = newNode(60);
     a->right->right = newNode(80);
-    // printf("\n");
-    // printf("Height : %d ", height(a));
-    // printf("\nInorder: ");
-    // printInorder(a);
-    // printf("\nPreorder :");
-    // printPreorder(a);
-    // printf("\nPostorder :");
-    // printPostorder(a);
-    // printf("\nLevelOrderRecusrsive :");
-    // printLevelOrderRecusrsive(a);
-    // printf("\nReverseLevelOrderRecusrsive :");
-    // printReverseLevelOrderRecusrsive(a);
-    // printf("\nLevelOrderDFS :");
-    // printLevelorderDFS(a);
-    // printf("\n");
-    // printf("Root Node: %d ", a->data);
+    a->right->left = newNode(70);
 
-
-    printf("\nSTACK IMPLEMENTATION\n");
+        //         50
+        //       /    \
+        //     30      20
+        //    /  \    /   \
+        // 10    60  70    80
     
-    node **stack = createStack(&top);
-    push(stack, &top, a);
-    push(stack, &top, a->left);
-    push(stack, &top, a->right);
-    push(stack, &top, a->left->left);
-    push(stack, &top, a->right->right);
-
-    while(top>0) {
-        printf("%d ", pop(stack, &top)->data);
-    }
+    printf("\nLevelOrderReverse :");
+    printLevelorderReverse(a);
+    
 
 }
