@@ -137,6 +137,20 @@ void printLevelOrderRecusrsive(node *root) {
         }
     }
 }
+/**
+ * Reverse Levelorder traversal function using Recursive ALgo for a tree
+**/
+void printReverseLevelOrderRecusrsive(node *root) {
+    if(root==NULL) return;
+    else {
+        int h = height(root);
+        for(int i=h; i>0; i--) {
+            printALevel(root, i);
+        }
+    }
+}
+
+
 
 
 
@@ -160,6 +174,8 @@ void main() {
     printPostorder(a);
     printf("\nLevelOrderRecusrsive :");
     printLevelOrderRecusrsive(a);
+    printf("\nReverseLevelOrderRecusrsive :");
+    printReverseLevelOrderRecusrsive(a);
     printf("\nLevelOrderDFS :");
     printLevelorderDFS(a);
     printf("\n");
