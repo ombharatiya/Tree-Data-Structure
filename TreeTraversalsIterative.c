@@ -108,28 +108,6 @@ void inOrderIterative(node *root) {
     }
 
 
-    // while(top>0 && temp!=NULL) {
-        
-
-    //     if(top>0) {
-    //         printf("%d ", pop(stack, &top)->data);
-    //         temp=temp->right;
-    //     }
-
-    // }
-
-    //     temp = pop(stack, &top);
-    //     if(temp->right!=NULL) push(stack, &top, temp->right);
-    //     if(temp->left!=NULL) {
-    //         push(stack, &top, temp);
-    //         push(stack, &top, temp->left);
-    //     }
-    //     else {
-    //         printf("%d ", temp->data);
-    //     }
-    //     // temp = pop(stack, &top);
-        
-    // }
 }
 
 /**
